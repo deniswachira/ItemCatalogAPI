@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+const port = 6000;
+//middlewares
+app.use(express.json());
 
 // Sample data
 const items = [
@@ -8,13 +11,19 @@ const items = [
     { id: 3, name: 'Item 3' }
 ];
 
+
+
+app.get('/', (req, res) => {
+    res.json("Welcome to ItemCatalogApi");
+});
+
 // Endpoint to get a list of items
-app.get('/api/items', (req, res) => {
+app.get('/items', (req, res) => {
     res.json(items);
 });
 
 // Endpoint to get an item by ID
-app.get('/api/items/:id', (req, res) => {
+app.get('/items/:id', (req, res) => {
     const itemId = parseInt(req.params.id);
     const item = items.find(item => item.id === itemId);
     if (item) {
@@ -24,7 +33,6 @@ app.get('/api/items/:id', (req, res) => {
     }
 });
 
-const port = 3000;
 app.listen(port, () => {
-    console.log(`API listening on port ${port}`);
+    console.log('Server running on port 6000');
 });
