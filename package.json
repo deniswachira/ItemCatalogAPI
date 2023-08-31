@@ -6,15 +6,11 @@
   "author": "Denis Wachira <deniswachira77@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.1.4",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.2.2",
-    "nodemon": "^2.0.22"
+    "express": "^4.18.2"
   }
 }
