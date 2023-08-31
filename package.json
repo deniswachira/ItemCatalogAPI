@@ -4,6 +4,7 @@
   "repository": "https://github.com/deniswachira/ItemCatalogAPI.git",
   "author": "Denis Wachira <deniswachira77@gmail.com>",
   "license": "MIT",
+  "keywords": [],
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
