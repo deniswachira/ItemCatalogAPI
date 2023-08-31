@@ -20,13 +20,13 @@ app.get('/', (req, res) =>
 );
 
 app.get("/items", (req, res) => {
-    res.json(items);
+    res.status(200).json(items);
 });
 app.get("/items/:id", (req, res) => {
     const itemId = parseInt(req.params.id);
     const item = items.find(item => item.id === itemId);
     if (item) {
-        res.json(item);
+        res.status(200).json(item);
     } else {
         res.status(404).json({ message: 'Item not found' });
     }
