@@ -1,38 +1,27 @@
 const express = require('express');
 const app = express();
-const port = 6000;
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const proverbsRoute = require('./routes/proverbRoute');
+const cookieParser = require('cookie-parser');
+
 //middlewares
+app.use(cookieParser())
 app.use(express.json());
+dotenv.config();
 
-// Sample data
-const items = [
-    { id: 1, name: 'Item 1' },
-    { id: 2, name: 'Item 2' },
-    { id: 3, name: 'Item 3' }
-];
+mongoose.set('strictQuery', false);
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(console.log("connected to mongodb"))
+    .catch((err) => console.log(err));
 
+app.get('/', (req, res) =>
+    res.send("Welcome ItemCatalog API")
+);
+app.use("/v1/proverbs", proverbsRoute);
 
-
-app.get('/', (req, res) => {
-    res.json("Welcome to ItemCatalogApi");
-});
-
-// Endpoint to get a list of items
-app.get('/items', (req, res) => {
-    res.json(items);
-});
-
-// Endpoint to get an item by ID
-app.get('/items/:id', (req, res) => {
-    const itemId = parseInt(req.params.id);
-    const item = items.find(item => item.id === itemId);
-    if (item) {
-        res.json(item);
-    } else {
-        res.status(404).json({ message: 'Item not found' });
-    }
-});
-
-app.listen(port, () => {
-    console.log('Server running on port 6000');
+app.listen(process.env.PORT || 5000, () => {
+    console.log('Server running on port 5000');
 });
