@@ -1,0 +1,14 @@
+{
+  "name": "ItemCatalogAPI",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/deniswachira/ItemCatalogAPI.git",
+  "author": "Denis Wachira <deniswachira77@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
